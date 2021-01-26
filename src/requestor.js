@@ -167,7 +167,8 @@ class LMRTFYRequestor extends FormApplication {
                 `// Saves: ${saves.map(a => LMRTFY.saves[a]).filter(s => s).join(", ")}\n` +
                 `// Skills: ${skills.map(s => LMRTFY.skills[s]).filter(s => s).join(", ")}\n` +
                 `const data = ${JSON.stringify(socketData, null, 2)};\n\n` +
-                `game.socket.emit('module.lmrtfy', data);\n`;
+                `game.socket.emit('module.lmrtfy', data);\n` +
+                `ui.notifications.info(game.i18n.localize("LMRTFY.SentNotification"))`;
             const macro = await Macro.create({
                 name: "LMRTFY: " + (message || title),
                 type: "script",
